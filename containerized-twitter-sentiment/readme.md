@@ -1,5 +1,5 @@
 # Containerized Twitter Sentiment Analysis
-
+This Project was created by following [this](https://www.analyticsvidhya.com/blog/2021/06/a-hands-on-guide-to-containerized-your-machine-learning-workflow-with-docker/) tutorial
 ###  Get the environment ready
 * Inside the project folder create virtual environment using venv and activate it
     * python -m venv env
@@ -222,6 +222,19 @@ if __name__ == '__main__':
     * python app.py
 
 ### Containerization
+* create Docerfile using the following code
+```
+FROM python:3.9.16-slim-buster
+WORKDIR /app
+
+COPY . /app
+
+RUN pip install -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["python3","app.py"]
+```
 * start docker desktop
 * in the terminal open app folder and run the following command
     * docker build -t twitter-sentiment:v1 .
